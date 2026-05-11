@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#060610">
+  <title>TERITOR TOR v0.0.1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- HUD: info bar atas -->
+  <div id="hud">
+    <div class="hud-block">
+      <span class="hud-label">Turn</span>
+      <span class="hud-value" id="hudTurn">TURN 1</span>
+    </div>
+
+    <div class="hud-block">
+      <span class="hud-label">Phase</span>
+      <span class="hud-value" id="hudPhase">EXPAND</span>
+    </div>
+
+    <!-- Timer countdown — muncul pas EXPAND phase -->
+    <div class="hud-block">
+      <span class="hud-label">Time</span>
+      <span class="hud-value" id="hudTimer">5:00</span>
+    </div>
+
+    <div class="hud-block">
+      <span class="hud-label">Territory</span>
+      <span class="hud-value" id="hudTiles">0 tiles</span>
+    </div>
+
+    <button id="btnEndTurn">END&nbsp;TURN</button>
+  </div>
+
+  <!-- Canvas area -->
+  <div id="canvasWrap">
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Legend pojok kanan atas -->
+    <div id="legend">
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#e63946"></div>
+        <span>You</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#457b9d"></div>
+        <span>Bot 1</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#6a4c93"></div>
+        <span>Bot 2</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#2a9d8f"></div>
+        <span>Bot 3</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-dot" style="background:#ffcc00; opacity:0.5"></div>
+        <span>Expandable</span>
+      </div>
+    </div>
+
+    <!-- Floating message -->
+    <div id="msgBox"></div>
+  </div>
+
+  <!-- Info bar bawah -->
+  <div id="infoBar">
+    <span id="tileInfo">Tap a tile to inspect</span>
+  </div>
+
+</div>
+
+<!--
+  LOAD ORDER PENTING:
+  Tile → MapGrid (butuh Tile)
+  → Renderer (butuh MapGrid)
+  → PhaseSystem (independent)
+  → Bot (independent)
+  → Game (butuh semua)
+-->
+<script src="map/Tile.js"></script>
+<script src="map/MapGrid.js"></script>
+<script src="core/Renderer.js"></script>
+<script src="core/PhaseSystem.js"></script>
+<script src="entity/Bot.js"></script>
+<script src="core/Game.js"></script>
+
+</body>
+</html>
